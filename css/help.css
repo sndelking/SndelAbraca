@@ -1,0 +1,6 @@
+.succeed{
+	background-image: url(../img/succeed.svg);
+}
+.failed{
+	background-image: url(../img/failed.svg);
+}

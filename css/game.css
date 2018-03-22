@@ -1,0 +1,302 @@
+*::-webkit-scrollbar, *::-webkit-scrollbar {
+	width: 2px;
+	height: 2px;
+}
+*::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.32); 
+	border-radius: 1px;
+}
+.players-collector {
+	position: relative;
+}
+.players-collector.left {
+	top: 0;
+	left: 0;
+}
+.players-collector.right{
+	right: 0;
+}
+.player {
+	padding: 8px;
+	padding-bottom: 4px;
+	margin: 0 8px 8px 8px;
+	max-width: 1024px;
+	border-radius: 2px;
+}
+.player.now {
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.2);
+	margin: 0 0 8px 0;
+	padding: 8px 16px 6px 16px;
+	z-index: 3;
+	background-color: #E0E0E0;
+}
+@media (min-width: 1024px){
+	.players-collector {
+		position: absolute;
+		margin-top: 128px;
+	}
+}
+@media (min-width: 1078px){
+	.players-collector {
+		width: 396px;
+	}
+	.player {
+		width: 364px;
+	}
+}
+@media (min-width: 1024px) and (max-width: 1077px){
+	.players-collector {
+		width: 391px;
+	}
+	.player {
+		width: 343px;
+	}
+}
+#self {
+	position: fixed;
+	bottom: 0;
+	padding: 8px;
+	width: 100%;
+	background: #FFF;
+	height: 56px;
+	z-index: 4;
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16), 0 1px 6px rgba(0, 0, 0, 0.23);
+	-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16), 0 1px 6px rgba(0, 0, 0, 0.23);
+}
+#self.now {
+	background-color: #E0E0E0;
+}
+.shake {
+	animation: shake .625s linear;
+}
+@keyframes shake {
+	8% {	transform: translate(-12px, 0);}
+	16% {	transform: translate(12px, 0);}
+	24% {	transform: translate(-8px, 0);}
+	32% {	transform: translate(8px, 0);}
+	40% {	transform: translate(-6px, 0);}
+	48% {	transform: translate(6px, 0);}
+	59% {	transform: translate(-4px, 0);}
+	64% {	transform: translate(4px, 0);}
+	72% {	transform: translate(-2px, 0);}
+	80% {	transform: translate(2px, 0);}
+	88% {	transform: translate(-1px, 0);}
+	96% {	transform: translate(1px, 0);}
+	100% {	transform: translate(0, 0);}
+}
+face {
+	background-image: url('../img/back.jpg');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.info {
+	float: left;
+	height: 40px;
+	margin: 8px;
+}
+.name {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 8px;
+	line-height: 16px;
+	font-weight: bold;
+}
+game-info {
+	display: inline-block;
+	height: 16px;
+}
+game-info > label.icon{
+	margin: 0;
+	padding-right: 16px;
+	float: left;
+}
+pos {
+	float: left;
+	height: 12px;
+	width: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	border: 2px solid #000;
+	border-radius: 2px;
+	margin-right: 4px;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	opacity: .54;
+}
+charactor {
+	height: 16px;
+	line-height: 16px;
+	padding-right: 16px;
+	float: left;
+	opacity: .54;
+}
+game-cards {
+	display: block;
+	position: relative;
+	height: auto;
+	width: 100%;
+	max-width: 364px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+game-cards > collector {
+	display: block;
+	position: relative;
+	height: 145px;
+	width: 364px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	transition: height 0.225s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+game-cards > collector:empty {
+	height: 0;
+}
+.game-card {
+	position: relative;
+	float: left;
+	width: 81px;
+	height: 125px;
+	margin: 8px;
+	border-radius: 4px;
+	background-size: cover;
+	animation: gameCardFadeIn 0.325s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.game-card + .game-card {
+	margin-left: 0;
+}
+@keyframes gameCardFadeIn {
+	from {	width: 0;}
+	to {	width: 81px;}
+}
+@keyframes gameCardFadeOut {
+	0% {
+		box-shadow: none;
+		transform: scale(1, 1);
+	}
+	72% {
+		width: 81px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.2);
+		transform: scale(1.06, 1.06);
+	}
+	100% {
+		width: 0;
+		box-shadow: none;
+	}
+}
+.discard-pile {
+	margin: 0 8px 8px 8px;
+	max-width: 992px;
+	padding: 8px;
+}
+@media (min-width: 1024px) {
+	.discard-pile {
+		margin: 8px auto 8px auto;
+		margin-top: 128px;
+		max-width: 25%;
+		min-width: 258px;
+	}
+}
+.slot {
+	height: 48px;
+	margin: 8px 0;
+}
+.slot-text{
+	height: 36px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.slot-bar {
+	height: 4px;
+	margin: 4px 0;
+	background-color: rgba(0, 0, 0, .26);
+}
+.slot-bar-used {
+	height: 100%;
+	transition: width 0.325s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+h1.winner {
+	margin: 8px;
+	text-align: center;
+	font-weight: bold;
+}
+animation-abraca {
+	width: 240px;
+	height: 240px;
+	z-index: 17;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	animation: animation-abraca 1.6s ease-out;
+}
+animation-abraca > abraca-1 {
+	width: 240px;
+	height: 240px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	background-image: url(../img/animation/abraca1.png);
+	animation: abraca-a 1.6s linear;
+}
+animation-abraca > abraca-2 {
+	width: 240px;
+	height: 240px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	background-image: url(../img/animation/abraca2.png);
+	animation: abraca-b 1.6s linear;
+}
+@keyframes animation-abraca {
+	0% {
+		opacity: 0;
+		transform: scale(0, 0);
+	}
+	18% {
+		opacity: 1;
+		transform: scale(1.02, 1.02);
+	}
+	20% {
+		transform: scale(1, 1);
+	}
+	72% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes abraca-a {
+	from {	transform: rotate(0deg);}
+	to {	transform: rotate(270deg);}
+}
+@keyframes abraca-b {
+	from {	transform: rotate(0deg);}
+	to {	transform: rotate(-270deg);}
+}
+
+button.FAB.start {
+	background-image: url(../img/icon/start.svg);
+}
+button.FAB.pause {
+	background-image: url(../img/icon/pause.svg);
+}
+button.FAB.replay {
+	background-image: url(../img/icon/replay.svg);
+}
+button.FAB.done {
+	background-image: url(../img/icon/done.svg);
+}
+button.FAB.abraca {
+	background-image: url(../img/icon/abraca.svg);
+}
+.command-list {
+	position: fixed;
+	right: 24px;
+	bottom: 36px;
+}

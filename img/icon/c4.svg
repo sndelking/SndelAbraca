@@ -1,0 +1,10 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
+<style type="text/css">
+	.a{fill:#9f3240;}
+</style>
+<circle class="a" cx="11" cy="27" r="7"/>
+<circle class="a" cx="37" cy="27" r="7"/>
+<path class="a" d="M30,35L30,35L30,35l-6,6l0,0L18,35.1l0,0l0,0C21.3,31.8,26.7,31.8,30,35L30,35z"/>
+<polygon class="a" points="24,25 42,7 24,11 6,7 "/>
+</svg>

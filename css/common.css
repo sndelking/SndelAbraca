@@ -1,0 +1,86 @@
+.succeed, .succeed-black{
+	background-image: url(../img/icon/succeed_black.svg);
+}
+.succeed-white{
+	background-image: url(../img/icon/succeed_white.svg);
+	color: #FFF;
+}
+.failed, .failed-black{
+	background-image: url(../img/icon/failed_black.svg);
+}
+.failed-white{
+	background-image: url(../img/icon/failed_white.svg);
+	color: #FFF;
+}
+
+.filter1{
+	color: #F00;
+	filter: hue-rotate(5deg) saturate(74%) brightness(120%);
+	-webkit-filter: hue-rotate(5deg) saturate(74%) brightness(120%);
+}
+.filter2{
+	color: #F00;
+	filter: hue-rotate(283deg) saturate(53%) brightness(128%);
+	-webkit-filter: hue-rotate(283deg) saturate(53%) brightness(128%);
+}
+.filter3{
+	color: #F00;
+	filter: hue-rotate(336deg) saturate(49%) brightness(144%);
+	-webkit-filter: hue-rotate(336deg) saturate(49%) brightness(144%);
+}
+.filter4{
+	color: #F00;
+	filter: hue-rotate(351deg) saturate(60%) brightness(120%);
+	-webkit-filter: hue-rotate(351deg) saturate(60%) brightness(120%);
+}
+.filter5{
+	color: #F00;
+	filter: hue-rotate(217deg) saturate(48%) brightness(160%);
+	-webkit-filter: hue-rotate(217deg) saturate(48%) brightness(160%);
+}
+.filter6{
+	color: #F00;
+	filter: hue-rotate(175deg) saturate(50%) brightness(196%);
+	-webkit-filter: hue-rotate(175deg) saturate(50%) brightness(196%);
+}
+.filter7{
+	color: #F00;
+	filter: hue-rotate(56deg) saturate(42%) brightness(240%);
+	-webkit-filter: hue-rotate(56deg) saturate(42%) brightness(240%);
+}
+.filter8{
+	color: #F00;
+	filter: hue-rotate(131deg) saturate(53%) brightness(196%);
+	-webkit-filter: hue-rotate(131deg) saturate(53%) brightness(196%);
+}
+.damage6{
+	background: #4AA;
+}
+
+.game-card[number='0'] {
+	background-image: url(../img/card/0.jpg);
+}
+.game-card[number='1'] {
+	background-image: url(../img/card/1.jpg);
+}
+.game-card[number='2'] {
+	background-image: url(../img/card/2.jpg);
+}
+.game-card[number='3'] {
+	background-image: url(../img/card/3.jpg);
+}
+.game-card[number='4'] {
+	background-image: url(../img/card/4.jpg);
+}
+.game-card[number='5'] {
+	background-image: url(../img/card/5.jpg);
+}
+.game-card[number='6'] {
+	background-image: url(../img/card/6.jpg);
+}
+.game-card[number='7'] {
+	background-image: url(../img/card/7.jpg);
+}
+.game-card[number='8'] {
+	background-image: url(../img/card/8.jpg);
+}

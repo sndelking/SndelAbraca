@@ -1,0 +1,105 @@
+
+.wrap{
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animation-wrap 1.6s linear infinite;
+  z-index: 11;
+}
+.circle-layout{
+  width: 64px;
+  height: 64px;
+  animation: animation-circle 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.layout-left{
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.layout-right{
+  float: right;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.circle-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  border: 4px solid #c59;
+  border-radius: 50%;
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transform: rotate(40deg);
+  animation: animation-circle-left 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.circle-right{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 56px;
+  border: 4px solid #c59;
+  border-radius: 50%;
+  border-right: 4px solid transparent;
+  border-top: 4px solid transparent;
+  transform: rotate(-310deg);
+  animation: animation-circle-right 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes animation-circle-left{
+  0%{
+    transform: rotate(40deg);
+  }
+  50%{
+    transform: rotate(-100deg);
+  }
+  100%{
+    transform: rotate(40deg);
+  }
+}
+/*右圈动画*/
+@keyframes animation-circle-right{
+  0%{
+    transform: rotate(-310deg);
+  }
+  50%{
+    transform: rotate(-170deg);
+  }
+  100%{
+    transform: rotate(-310deg);
+  }
+}
+/*外层动画*/
+@keyframes animation-circle{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(180deg);
+  }
+  50%{
+    transform: rotate(360deg);
+  }
+  75%{
+    transform: rotate(540deg);
+  }
+  100%{
+    transform: rotate(720deg);
+  }
+}
+/*最外层动画*/
+@keyframes animation-wrap{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,113 @@
+
+/*card*/
+cardCollection {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4px;
+  justify-content: center;
+}
+.card {
+  position: relative;
+  min-width: 343px;
+  max-width: 512px;
+  width: auto;
+  height: auto;
+  margin: 8px auto;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
+  background-color: #fff;
+  transition: all 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  animation: collectFromBottom .225s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes collectFromBottom {
+  from {
+    transform: translateY(72);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;}
+}
+.card.primary > .card-part {
+  background-color: #4aa;
+  background-color: var(--primary);
+  color: #fff;
+}
+.card.error > .card-part {
+  background-color: #ea4;
+  background-color: var(--error);
+  color: #fff;
+}
+@media (max-width: 528px) {
+  .card {
+    margin: 8px;
+  }
+}
+cardCollection > .card {
+  flex: 1;
+  margin: 4px;
+}
+.card > img.left {
+  float: left;
+  height: 100%;
+}
+.card > img.top {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.cardSpliding {
+  margin-top: 0;
+  animation: cardSpliding 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes cardSpliding {
+  from {
+    margin-top: -8px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+.cardCombining {
+  margin-top: -8px;
+  animation: combining 0.195s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes combining {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: -8px;
+  }
+}
+.card-part {
+  position: relative;
+  max-width: 100%;
+  padding: 8px;
+  background-color: #fff;
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cardTabel {
+  position: relative;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.cardFullScreen {
+  margin: 0 auto 8px auto;
+  width: 100%;
+  max-width: 100%;
+}
+@media (min-width: 1024px) {
+  .cardFullScreen {
+    margin: 8px auto;
+    max-width: 512px;
+  }
+}
+.cardFullScreen > .card-part {
+  padding: 16px;
+}
