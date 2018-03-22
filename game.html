@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sndel Abracadabra</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=375, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_545564_p6xb7tg5aui60f6r.css">
+	<link rel="stylesheet" type="text/css" href="css/SndelMaterial.css">
+	<link rel="stylesheet" type="text/css" href="css/fabWrap.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/game.css">
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/SndelMaterial.js"></script>
+	<script src="js/game.js"></script>
+</head>
+
+<body>
+	<div class="dialog" state="off" tabindex="-1"></div>
+	<div class="drawer" state="off" tabindex="-1">
+		<div class="drawerTheme" style="background-image: url(../img/header.svg)">Sndel Abraca</div>
+		<button class="flat" onmousedown="leaveRoom()">
+			<i class="icon home"></i>离开</button>
+		<button class="flat" onmousedown="help()">
+			<i class="icon help-circle"></i>帮助</button>
+		<button class="flat" onmousedown="about()">
+			<i class="icon information"></i>关于</button>
+	</div>
+	<div id="mask" state="off"></div>
+	<div id="appBar" class="image flexible" style="background-image: url(img/header.svg)">
+		<toolsBar>
+			<button class="icon menu left" style="color: #fff" ripple="light" onclick="menuOn()"></button>
+			<h3 id="roomID">正在获取房间号……</h3>
+			<button class="icon help-circle right" style="color: #fff" ripple="light" onclick="help()"></button>
+		</toolsBar>
+	</div>
+	<div class="players-collector left"></div>
+	<div class="players-collector right"></div>
+	<div class="list command-list" tabindex="-1">
+		<button class="flat" onmousedown="excuteCard(1)" style="color: #cb3c2b">
+			<i class="icon dragon"></i>1 远古巨龙</button>
+		<button class="flat" onmousedown="excuteCard(2)" style="color: #733787">
+			<i class="icon ghost"></i>2 黑暗幽灵</button>
+		<button class="flat" onmousedown="excuteCard(3)" style="color: #bd4c8c">
+			<i class="icon butterfly"></i>3 甜蜜的梦</button>
+		<button class="flat" onmousedown="excuteCard(4)" style="color: #9f3240">
+			<i class="icon owl"></i>4 猫头鹰</button>
+		<button class="flat" onmousedown="excuteCard(5)" style="color: #325591">
+			<i class="icon flash"></i>5 闪电暴风雨</button>
+		<button class="flat" onmousedown="excuteCard(6)" style="color: #409d96">
+			<i class="icon snowflake"></i>6 暴风雪</button>
+		<button class="flat" onmousedown="excuteCard(7)" style="color: #c39c3e">
+			<i class="icon fire"></i>7 火球术</button>
+		<button class="flat" onmousedown="excuteCard(8)" style="color: #409d53">
+			<i class="icon flask"></i>8 魔法药水</button>
+		<button class="flat skip" disabled="disabled" onmousedown="endTurn()">
+			<i class="icon skip-next"></i>结束回合</button>
+	</div>
+	<FAB>
+		<button class="primary raised FAB">
+			<i class="icon play"></i>
+		</button>
+	</FAB>
+	<div id="snackbar"></div>
+	<div id="self">
+		<face></face>
+		<div class="info">
+			<h5 class="name">Name</h5>
+			<pos>-1</pos>
+			<game-info></game-info>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

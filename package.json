@@ -1,0 +1,19 @@
+{
+  "name": "sndel_abraca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-stage-2": "^6.24.1"
+  },
+  "scripts": {
+    "test": "start",
+    "start": "node server.js"
+  },
+  "author": "Sndel King",
+  "license": "ISC"
+}

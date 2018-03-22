@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Get Start</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, maximum-scale=1,  user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_545564_litaxo0cxghz1tt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/SndelMaterial.css">
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/SndelMaterial.js"></script>
+	<script src="js/index.js"></script>
+</head>
+
+<body>
+	<div id="appBar" class="image flexible" style="background-image: url(img/header.svg)"> 
+		<toolsBar>
+			<h3>Sndel Abraca
+				<sup>BETA</sup>
+			</h3>
+			<button class="icon help-circle right" onclick="help()" ripple="light" style="color: #fff"></button>
+		</toolsBar>
+	</div>
+	<!-- 
+	<div class="card error">
+		<div class="card-part">
+			<h3>断线重连
+				<button class="icon primary error"></button>
+			</h3>
+			<p>检测到你有正在进行的游戏。你可以返回继续游戏。</p>
+		</div>
+	</div> -->
+	<div class="card primary">
+		<div class="card-part">
+			<h3>你的昵称</h3>
+			<p>这将作为这次游戏的名字。</p>
+			<div class="textField">
+				<input type="text" id="name" required visited="false">
+				<label>昵称</label>
+			</div>
+			<button class="raised" onclick="randomName()">随机生成</button>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-part" id="enterRoom">
+			<h3>加入房间</h3>
+			<p>你可以加入一间已有的房间，或者创建一个新房间。</p>
+			<div class="textField">
+				<input type="text" id="roomID" required visited="false">
+				<label>房间号</label>
+			</div>
+			<button class="raised primary" onclick="joinRoom()" ripple="light">加入</button>
+		</div>
+	</div>
+	<div class="card" onclick="newRoom()">
+		<div class="card-part" id="newRoom">
+			<div style="display: flex;">
+				<h3 style="flex: 1 1 auto">创建新房间</h3>
+				<button class="icon plus right" id="newBtn" style="color: rgba(0,0,0,.54);"></button>
+			</div>
+			<div class="refreshing" style="margin: 16px auto; display: none;">
+				<div class="refreshing-circle-layout">
+					<div class="refreshing-layout-left">
+						<div class="refreshing-circle-left"></div>
+					</div>
+					<div class="refreshing-layout-right">
+						<div class="refreshing-circle-right"></div>
+					</div>
+				</div>
+			</div>
+			<h1 id="newRoomID" style="margin: 16px 0; text-align: center; display: none;"></h1>
+		</div>
+	</div>
+	<div id="snackbar"></div>
+</body>
+
+</html>
