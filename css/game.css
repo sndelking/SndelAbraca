@@ -108,7 +108,7 @@ game-info {
 }
 game-info > label.icon{
 	margin: 0;
-	padding-right: 16px;
+	margin-right: 8px;
 	float: left;
 }
 pos {
@@ -128,7 +128,7 @@ pos {
 charactor {
 	height: 16px;
 	line-height: 16px;
-	padding-right: 16px;
+	padding-right: 8px;
 	float: left;
 	opacity: .54;
 }

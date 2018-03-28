@@ -178,7 +178,7 @@ export default class Room {
 				this.nowPlayer = this.alivePlayers()[this.aliveNext(this.nowPlayer)].pos;
 			this.players.forEach(player => player.turnEndable = false)
 			
-			this.records.push({ type: 7, playerIp: user.ip})
+			this.records.push({ type: 7, playerIp: player.ip})
 		}
 	};
 	checkWinner() {

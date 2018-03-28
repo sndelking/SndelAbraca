@@ -88,7 +88,8 @@ label.icon {
   vertical-align: middle;
   display: inline-block;
   font-size: 1em;
-  margin: -2px 4px 0 4px;
+  margin-top: -2px;
+  padding: 0 4px;
 }
 label.icon:before {
   width: 16px;
@@ -96,6 +97,13 @@ label.icon:before {
   line-height: 16px;
   font-size: 16px;
   margin-right: 4px;
+}
+label.clickable {
+  cursor: pointer;
+  border-radius: 2px;
+}
+label.clickable:hover {
+  background-color: rgba(0,0,0,.12)
 }
 h3 .icon,
 h4 .icon,

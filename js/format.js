@@ -55,7 +55,7 @@ class Format {
 }
 Format.previseDialog = `<content-area>
                     <h2>你的预言牌</h2>
-                    <p>这些是你通过<label class='icon game-card-4'>4 猫头鹰</label>预知的牌。</p>
+                    <p>这些是你通过<label class='icon owl' style='color: #9f3240'>4 猫头鹰</label>预知的牌。</p>
                     <p>预知牌是游戏初移出的四张牌，它们不会发给玩家，也不能被使用。只有你能看到你得到的预知牌。</p>
                     <p>点击底部的<label class='icon eye'></label>随时查看这些牌。</p>
                     <game-cards><collector></collector></game-cards>

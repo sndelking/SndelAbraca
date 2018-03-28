@@ -16,6 +16,7 @@ refreshCallback = (res, status) => {
     refreshFAB(room, self);
     refreshCommandList(room, self);
     render(room, self);
+    refreshPreviseEvent();
     $room = room;
   }
 }
@@ -92,7 +93,7 @@ function excuteCard(cardNum) {
         $.get("/refresh", (res, status) => {
           refreshCallback(res, status);
           if (status == "success") {
-            // if (cardNum == 4 && cardStatus == 1) RefreshPreviseDialog();
+            if (cardNum == 4 && cardStatus == 0) refreshPreviseDialog();
           }
         });
       }
@@ -346,13 +347,13 @@ function drawPlayerDead(msg) {
     RefreshDeadDialog();
   }
 }
-function RefreshPreviseDialog() {
-  $(".dialog").html(PreviseDialog());
+function refreshPreviseDialog() {
+  $(".dialog").html(Format.previseDialog);
   for (var i = 0; i < $room.players[$self].owls.length; i++) {
     $(".dialog")
       .find("collector")
       .append(
-      "<div class='game-card' number=" + $room.players[$self].owls[i] + "></div>"
+        "<div class='game-card' number=" + $room.players[$self].owls[i] + "></div>"
       );
   }
   callDialog();
@@ -367,7 +368,9 @@ function refreshPreviseEvent() {
     .unbind("click");
   $("#self")
     .find("label.eye")
-    .click(RefreshPreviseDialog);
+    .click(refreshPreviseDialog);
+  $("#self")
+    .find("label.eye").addClass("clickable")
 }
 function refreshCardsEvent() {
   $("#self")
