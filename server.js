@@ -66,12 +66,15 @@ app.post('/excuteCard', urlencodedParser, function (req, res) {
 	res.end(JSON.stringify(data));
 })
 
-app.post('/checkPlayer', urlencodedParser, function (req, res) {
-	var ip = req.connection.remoteAddress;
-	if (GameSys.ipDictionary[ip] != undefined) {
-		GameSys.ipDictionary[ip].online = true;
+app.get('/getJoinedRoom', function (req, res) {
+	let player = GameSys.ipDictionary[req.connection.remoteAddress];
+	let roomID = player ? player.roomID : null;
+	let status = 0;
+	if(roomID!==null)	status = 1
+	let data = {
+		"status": status,
+		"roomID": roomID
 	}
-	var data = {}
 	res.end(JSON.stringify(data));
 })
 

@@ -344,7 +344,7 @@ function drawPlayerDead(msg) {
       cardFadeOut($(this));
     });
   if (playerID == $self) {
-    RefreshDeadDialog();
+    refreshDeadDialog();
   }
 }
 function refreshPreviseDialog() {
@@ -358,7 +358,7 @@ function refreshPreviseDialog() {
   }
   callDialog();
 }
-function RefreshDeadDialog() {
+function refreshDeadDialog() {
   $(".dialog").html(CardsDialog());
   callDialog();
 }
@@ -378,7 +378,7 @@ function refreshCardsEvent() {
     .unbind("click");
   $("#self")
     .find("label.cards")
-    .click(RefreshDeadDialog);
+    .click(refreshDeadDialog);
 }
 function hideDialogAndReady() {
   hideDialog();

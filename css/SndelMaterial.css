@@ -108,10 +108,9 @@ label.clickable:hover {
 h3 .icon,
 h4 .icon,
 h5 .icon {
-  color: rgba(0, 0, 0, 0.54);
   height: 24px;
   line-height: 24px;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   display: inline-block;
 }
 h3 .icon:before,
@@ -127,9 +126,6 @@ h5 .icon:before {
 }
 .back {
   background-image: url(../img/icon/back.svg);
-}
-.error {
-  background-image: url(../img/icon/error.svg);
 }
 .paginationRight {
   background-image: url(../img/icon/paginationRight.svg);

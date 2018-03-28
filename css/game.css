@@ -186,7 +186,7 @@ game-cards > collector:empty {
 	}
 }
 .discard-pile {
-	margin: 0 8px 8px 8px;
+	margin: 0 8px 80px 8px;
 	max-width: 992px;
 	padding: 8px;
 }

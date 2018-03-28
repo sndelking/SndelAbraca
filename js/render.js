@@ -51,7 +51,9 @@ renderPlayerCards = (player, roomStatus, self) => {
         this.player(player.pos).find("collector").append(Format.card(card))
     })
     removedCardsIndexList.forEach(card => {
-        cardFadeOut(this.player(player.pos).find(`[number='${card}']`).eq(0));
+        let cardJqNode = this.player(player.pos).find(`[number='${card}']`).eq(0);
+        cardFadeOut(cardJqNode);
+        abracaSucceed(card, cardJqNode.offset().top, cardJqNode.offset().left);
     })
 }
 renderDiscardPileStatis = (room) => {

@@ -240,7 +240,7 @@ function callMask() {
 }
 function hideMask() {
   $("#mask").attr("state", "off");
-  document.documentElement.style.overflowY = "auto";
+  document.documentElement.style.overflow = "visible";
 }
 /*menu*/
 function initDrawerMenu() {

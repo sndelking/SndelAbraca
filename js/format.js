@@ -52,6 +52,26 @@ class Format {
                     ${innerContent}
                 </div>`
     }
+    static reconnectCard(roomID) {
+        return `<div class="card error">
+                    <div class="card-part">
+                        <h3><i class="icon alert-circle"></i>
+                            断线重连
+                        </h3>
+                        <p>检测到你有正在进行的游戏：房间 ${roomID}</p>
+                        <p>你可以返回继续游戏，或者进入新的房间。当你进入新的房间，你将会在原本房间的游戏中认输。</p>
+                        <button class="raised" onclick="reconnectRoom(${roomID})">重连</button>
+                    </div>
+                </div>`
+    }
+    static abracaAnimation(card, top, left) {
+        return `<animation-abraca class='filter${card}'
+                    style="top:${top - 120 + 125 / 2}px;
+                    left:${left - 120 + 81 / 2}px">
+                        <abraca-1></abraca-1>
+                        <abraca-2></abraca-2>
+                </animation-abraca>`
+    }
 }
 Format.previseDialog = `<content-area>
                     <h2>你的预言牌</h2>
