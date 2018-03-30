@@ -1,6 +1,6 @@
 render = (room, self) => {
     renderPlayers(room, self);
-    renderDiscardPileStatis(room);
+    renderActivitiesCard(room);
 }
 renderPlayers = (room, self) => {
     room.players.forEach((player, pos) => {
@@ -56,10 +56,12 @@ renderPlayerCards = (player, roomStatus, self) => {
         abracaSucceed(card, cardJqNode.offset().top, cardJqNode.offset().left);
     })
 }
-renderDiscardPileStatis = (room) => {
+renderActivitiesCard = (room) => {
     if (room.status)
-        if (!$(".discard-pile").length)
-            $("body").append(Format.discardPileStatis(room.usedCards))
+        if (!$(".discard-pile").length) {
+            $("body").append(Format.activitiesCard(room.usedCards))
+            initialize();
+        }
         else {
             $(".discard-pile").find('.slot').map(function (idx) {
                 $(this).find('.slot-text-used').html(`${room.usedCards[idx]} / ${idx + 1}`);

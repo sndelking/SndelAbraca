@@ -34,7 +34,7 @@ class Format {
                     <button class='flat primary' onclick='hideDialogAndReady()'>准备新游戏</button>
                 </action-aream>`
     }
-    static discardPileStatis(usedCards) {
+    static activitiesCard(usedCards) {
         let innerContent = ``;
         for (let i = 0; i < 8; i++) {
             innerContent += `<div class='slot'>
@@ -47,9 +47,24 @@ class Format {
                                 </div>
                             </div>`
         }
-        return `<div class='card discard-pile'>
-                    <h3>已用卡统计</h3>
-                    ${innerContent}
+        return `<div class='card activities'>
+                    <div id="tabsBar">
+                        <tab ripple="light">
+                            <label>已用卡统计</label>
+                        </tab>
+                        <tab ripple="light">
+                            <label>游戏记录</label>
+                        </tab>
+                    </div>
+                    <div id="panels">
+                        <div class="panel active discard-pile">
+                            <h3>已用卡统计</h3>
+                            ${innerContent}
+                        </div>
+                        <div class="panel rightHide">
+                            <h3>游戏记录</h3>
+                        </div>
+                    </div>
                 </div>`
     }
     static reconnectCard(roomID) {

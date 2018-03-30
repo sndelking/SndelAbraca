@@ -30,7 +30,11 @@ export default class Player {
         this.cards.push(cardNo);
     };
     removeCard(cardNo) {
-        return (this.cards.splice(this.cards.indexOf(cardNo), 1) + 1) ? 0 : 1;
+        let indexOfCard = this.cards.indexOf(cardNo);
+        if (indexOfCard > -1) {
+            this.cards.splice(indexOfCard, 1); return 0;
+        }
+        else return 1;
     };
     requestAccess(requesterPos) {
         if (requesterPos == this.pos) return 2

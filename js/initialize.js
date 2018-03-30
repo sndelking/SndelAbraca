@@ -1,10 +1,10 @@
-$(document).ready(initialize);
+$(document).ready(gameInitialize);
 const $roomID = window.location.href.split('/').slice(-1)[0];
 var $room = null;
 var $self = null;
 
 var $doneAnimation = false;
-function initialize() {
+function gameInitialize() {
 	$room = null;
 	$self = null;
 	initData();

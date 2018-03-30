@@ -35,13 +35,15 @@
 #panels{
   box-sizing: border-box;
   height: 100%;
-  width: 100%;
-  /* overflow-x: scroll; */
+  width: auto;
+  display: flex;
+  overflow-x: scroll;
   overflow-y: visible;
   position: relative;
 }
 .panel {
-  position: absolute;
+  flex: 0 0 auto;
+  position: relative;
   width: 100%;
   opacity: 0;
   height: 100%;
@@ -52,18 +54,41 @@
 }
 .panel.active {
   opacity: 1;
-  transform: translateX(0);
 }
-.panel.leftHide {
-  opacity: 0;
-  transform: translateX(-480px);
-  z-index: -1;
-}
-.panel.rightHide {
-  opacity: 0;
-  transform: translateX(480px);
+.panel.hide {
+  opacity: 1;
   z-index: -1;
 }
 .panel > h3 {
   margin: 8px;
+}
+/* tabs bar in card */
+.card > #tabsBar {
+  border-bottom: 1px solid rgba(0,0,0,.12)
+}
+.card > #tabsBar > tab > label {
+  color: #000;
+  transition: opacity 0.225s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card > #tabsBar > tab > label.active {
+  color: #4aa;
+  color: var(--primary);
+  opacity: 1;
+}
+.card > #tabsBar > span {
+  border-color: #4aa;
+  border-color: var(--primary);
+}
+.card #panels{
+  padding: 0!important;
+  width: auto;
+display: flex}
+.card .panel{
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 auto
+}
+.card .panel.hide{
+  transform: none;
 }

@@ -14,6 +14,7 @@
 	left: 0;
 }
 .players-collector.right{
+	top: 0;
 	right: 0;
 }
 .player {
@@ -185,13 +186,15 @@ game-cards > collector:empty {
 		box-shadow: none;
 	}
 }
-.discard-pile {
+.activities {
 	margin: 0 8px 80px 8px;
 	max-width: 992px;
+}
+.discard-pile {
 	padding: 8px;
 }
 @media (min-width: 1024px) {
-	.discard-pile {
+	.activities {
 		margin: 8px auto 8px auto;
 		margin-top: 128px;
 		max-width: 25%;

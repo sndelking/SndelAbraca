@@ -212,7 +212,8 @@ export default class Room {
 			usedCards: this.usedCards,
 			nowPlayer: this.nowPlayer,
 			status: this.status,
-			winner: this.winner
+			winner: this.winner,
+			records: this.records
 		}
 	};
 };

@@ -92,10 +92,11 @@ function initTabsBar() {
   function tabClickEvents() {
     let prevId = parseInt(activeLine.attr("activeId"));
     var activeId = $(this).attr("tabId");
+    var activePanel = tabPanels.eq(activeId);
     activeLine.attr("activeId", activeId);
     refreshTabsBar(prevId);
     refreshPanels();
-    window.scrollTo(0, 0);
+    activePanel.scrollTop(0);
   }
   function refreshTabsBar(prevId) {
     var prevTab = tabs.eq(prevId);
@@ -109,24 +110,33 @@ function initTabsBar() {
   function refreshPanels() {
     var activeId = parseInt(activeLine.attr("activeId"));
     var activePanel = tabPanels.eq(activeId);
-    activePanel.removeClass("leftHide");
-    activePanel.removeClass("rightHide");
+    tabPanelsContainer.animate({scrollLeft: tabPanelsContainer.scrollLeft() + activePanel.position().left}, 275)
+    for (var i = 0; i < tabPanels.length; i++) {
+      tabPanels.eq(i).removeClass("active");
+      tabPanels.eq(i).addClass("hide");
+    }
+    activePanel.removeClass("hide");
     activePanel.addClass("active");
-    for (var i = 0; i < activeId && i < tabPanels.length; i++) {
-      tabPanels.eq(i).removeClass("active");
-      tabPanels.eq(i).removeClass("rightHide");
-      tabPanels.eq(i).addClass("leftHide");
-    }
-    for (var i = activeId + 1; i < tabPanels.length; i++) {
-      tabPanels.eq(i).removeClass("active");
-      tabPanels.eq(i).removeClass("leftHide");
-      tabPanels.eq(i).addClass("rightHide");
-    }
   }
 }
 function initTabPanels() {
   var appBarH = appBar.height();
   tabPanelsContainer.css("padding-top", appBarH);
+  tabPanelsContainer.height(tabPanelsContainer.height() - tabPanelsContainer.css("padding-top"));
+  var scrollEventTimer;
+  tabPanelsContainer.scroll(handleTabPanelsScroll);
+  function handleTabPanelsScroll() {
+    clearTimeout(scrollEventTimer);
+    scrollEventTimer = setTimeout(() => {
+      let closeastIndex = 0;
+      tabPanels.each(index => {
+        closeastIndex =
+          Math.abs(tabPanels.eq(closeastIndex).position().left - 0) >
+            Math.abs(tabPanels.eq(index).position().left - 0) ? index : closeastIndex;
+      });
+      tabsBar.find("tab").eq(closeastIndex).click()
+    }, 12)
+  }
 }
 /*card*/
 function initCards() {
@@ -236,11 +246,11 @@ function visitInput() {
 /*mask*/
 function callMask() {
   $("#mask").attr("state", "on");
-  document.documentElement.style.overflow = "hidden";
+  document.documentElement.style.overflowY = "hidden";
 }
 function hideMask() {
   $("#mask").attr("state", "off");
-  document.documentElement.style.overflow = "visible";
+  document.documentElement.style.overflowY = "visible";
 }
 /*menu*/
 function initDrawerMenu() {
