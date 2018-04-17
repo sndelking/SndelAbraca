@@ -238,6 +238,7 @@ function initInput() {
       '<underText class="warnning"><i class="icon alert"></i>必填项</underText>'
     );
   $(this).after("<line></line>");
+  $(this).after(`<label>${$(this).attr('label')}</label>`);
   $(this).focus(visitInput);
 }
 function visitInput() {

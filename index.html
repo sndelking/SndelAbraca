@@ -8,13 +8,42 @@
 	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_545564_litaxo0cxghz1tt9.css">
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/SndelMaterial.css">
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/SndelMaterial.js"></script>
-	<script src="js/index.js"></script>
+	<!-- <script src="js/jquery-3.2.1.js"></script> -->
+	<script src="js/SndelMaterial_New.js"></script>
+	<!-- <script src="js/SndelMaterial.js"></script> -->
+	<!-- <script src="js/index.js"></script> -->
 </head>
 
 <body>
-	<div id="appBar" class="image flexible" style="background-image: url(img/header.svg)"> 
+	<header class="color">
+		<app-title>Sndel Abraca
+			<sup>BETA</sup>
+		</app-title>
+		<tools-bar>
+			<button class="icon help-circle" style="color: #fff"></button>
+		</tools-bar>
+	</header>
+	
+	<content>
+		<layout>
+			<card-collection>
+				<card id="enterRoom">
+					<card-contents>
+						<card-title>加入房间</card-title>
+						<p>你可以加入一间已有的房间，或者创建一个新房间。</p>
+						<form>
+						<input type="number" id="roomID" required visited="false" label="房间号">
+						<input type="submit" value="提交">
+						</form>
+					</card-contents>
+					<card-actions>
+						<button class="raised" primary onclick="joinRoom()">加入</button>
+					</card-actions>
+				</card>
+			</card-collection>
+		</layout>
+	</content>
+	<!-- <div id="appBar" class="image flexible" style="background-image: url(img/header.svg)"> 
 		<toolsBar>
 			<h3>Sndel Abraca
 				<sup>BETA</sup>
@@ -63,7 +92,7 @@
 			<h1 id="newRoomID" style="margin: 16px 0; text-align: center; display: none;"></h1>
 		</div>
 	</div>
-	<div id="snackbar"></div>
+	<div id="snackbar"></div> -->
 </body>
 
 </html>

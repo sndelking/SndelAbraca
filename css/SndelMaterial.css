@@ -4,8 +4,9 @@
 @import "SndelMaterial/button.css";
 @import "SndelMaterial/textField.css";
 @import "SndelMaterial/drawer&list.css";
+@import "SndelMaterial/ripple.css";
 :root {
-  --primary: #4aa;
+  --primary: #5bc5be;
   --accent: #f48;
   --error: #ea4;
 }
@@ -24,6 +25,8 @@ body {
   -webkit-tap-highlight-color: transparent;
   font-size: 14px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 *::-webkit-scrollbar {
   width: 0;
@@ -31,6 +34,15 @@ body {
 }
 *::-webkit-scrollbar-thumb {
   background-color: transparent;
+}
+layout{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 4px;
+  box-sizing: border-box
 }
 h1,
 h2,
@@ -141,41 +153,6 @@ h5 .icon:before {
   padding-right: 24px;
 }
 
-/*ripple & pressing*/
-ripple {
-  position: absolute;
-  display: block;
-  background-color: #000;
-  opacity: 0;
-  border-radius: 50%;
-  transform: scale(0, 0);
-}
-[ripple="light"] ripple {
-  background-color: #fff;
-}
-ripple.animating {
-  transform: scale(1, 1);
-  animation: bloom 0.425s cubic-bezier(0.4, 0, 0.2, 1), wave 0.375s;
-}
-@keyframes bloom {
-  from {
-    transform: scale(0, 0);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-@keyframes wave {
-  0% {
-    opacity: 0;
-  }
-  12% {
-    opacity: 0.16;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 pressing {
   position: absolute;
   display: block;

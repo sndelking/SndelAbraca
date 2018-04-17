@@ -60,7 +60,8 @@ renderActivitiesCard = (room) => {
     if (room.status)
         if (!$(".discard-pile").length) {
             $("body").append(Format.activitiesCard(room.usedCards))
-            initialize();
+            initTabsBar();
+            initTabPanels();
         }
         else {
             $(".discard-pile").find('.slot').map(function (idx) {

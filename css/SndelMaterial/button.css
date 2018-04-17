@@ -1,32 +1,105 @@
-/*button*/
+/* button */
 button {
   position: relative;
   display: block;
-  padding: 0 16px;
   height: 36px;
   line-height: 36px;
   font-weight: 500;
+  padding: 0 8px;
   background-color: transparent;
   border: none;
   border-radius: 2px;
   margin: 8px;
   cursor: pointer;
-  transition: all 0.195s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.195s ease-in-out;
   outline: none;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.87);
 }
-button + button {
-  margin-right: 0;
-}
-button.raised {
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-}
-button:disabled{
+button:disabled {
   opacity: 0.3;
   box-shadow: none;
 }
+button[primary],
+button[primary].icon{
+  color: var(--primary, #5bc5be);
+}
+button[primary].raised{
+  background-color: var(--primary, #5bc5be);
+  color: #fff;
+}
+/* button shade for pressing */
+shade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #999;
+  transition: opacity 0.195s ease-in-out;
+}
+[light] shade {
+  /* default */
+}
+[dark] shade {
+  background-color: #ccc;
+}
+
+/* flat */
+button.flat {
+  min-width: 88px;
+}
+button:active shade {
+  opacity: 0.32;
+}
+button.flat:disabled {
+  opacity: 0.3;
+  cursor: disabled;
+}
+/* icon */
+button.icon {
+  padding: 6px;
+  width: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 24px;
+}
+button.icon shade {
+  background-color: #ccc;
+}
+button.icon[dark] shade {
+  background-color: #999;
+}
+button.icon[primary] shade {
+  background-color: var(--primary, #5bc5be);
+}
+
+/* raised */
+button.raised {
+  background-color: #fff;
+  padding: 0 16px;
+}
+button.raised:active,
+button.raised:hover {
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+button.raised[primary] shade{
+  background-color: #ccc;
+  
+}
+@media (max-width: 1024px) {
+  button.raised {
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+  }
+  button.raised:active,
+  button.raised:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+
 .card-part button:not(.icon) {
   float: right;
   margin-bottom: -2px;
@@ -34,45 +107,22 @@ button:disabled{
 .card-part button:not(.icon):first-of-type {
   margin-right: -2px;
 }
-.card-part button.icon{
+.card-part button.icon {
   margin: auto 0;
-}
-button.raised:active,
-button.raised:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.2);
-}
-button.flat {
-  background-color: #fff;
-  padding: 0 8px;
-}
-button.flat:active,
-button.flat:hover {
-  background-color: rgba(0, 0, 0, 0.12);
 }
 button.raised.primary {
   background-color: var(--primary);
-  background-color: #4aa;
+  background-color: #5bc5be;
   color: #fff;
 }
 button.flat.primary {
   background-color: transparent;
-  color: var(--primary, #4aa);
+  color: var(--primary, #5bc5be);
 }
 button.accent {
   background-color: #f48;
   background-color: var(--accent);
   color: #fff;
-}
-button.icon {
-  padding: 6px;
-  width: 36px;
-  border-radius: 18px;
-  font-size: 24px;
-  line-height: 24px;
-}
-button.icon:active,
-button.icon:hover {
-  box-shadow: none;
 }
 h3 > button.icon {
   margin-top: -8px;
