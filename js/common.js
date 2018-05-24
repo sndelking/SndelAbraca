@@ -1,3 +1,5 @@
+document.write("<script src='api/api.index.js'></script>");
+
 function help() {
 	window.location.href = "help";
 };

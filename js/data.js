@@ -275,10 +275,3 @@ const nList = [
 "红粉宝宝",
 "习大大"
 ];
-function randomName() {
-  let name =
-    adjList[Math.floor(Math.random() * adjList.length)] +
-    "的" +
-    nList[Math.floor(Math.random() * nList.length)];
-  $("#name").val(name);
-}

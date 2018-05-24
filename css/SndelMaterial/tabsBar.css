@@ -1,16 +1,12 @@
 /*tabs bar*/
-#tabsBar {
+tabs-bar {
+  display: block;
   position: relative;
   width: 100%;
   height: 48px;
 }
-#tabsBar > tab {
-  display: block;
-  overflow: hidden;
-  position: relative;
+tabs-bar tab {
   float: left;
-}
-#tabsBar > tab > label {
   display: block;
   font-weight: 500;
   font-size: 14px;
@@ -18,77 +14,72 @@
   line-height: 48px;
   padding-left: 24px;
   padding-right: 24px;
-  color: #fff;
+  color: #000;
   opacity: 0.54;
   transition: opacity 0.225s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
-#tabsBar > tab > label.active {
+[primary] tab,
+header.color tab {
+  color: #fff;
+}
+tabs-bar tab.active {
   opacity: 1;
 }
-#tabsBar > span {
+tabs-bar tab-slected-line {
   position: absolute;
-  height: 46px;
+  height: 3px;
+  background-color: var(--primary, #5bc5be);
   transition: all 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-  border-bottom: 2px solid #fff;
+  bottom: 0;
 }
-#panels{
+[primary] tab-slected-line,
+header.color tab-slected-line {
+  background-color: #fff;
+}
+tabs-panels-collection {
   box-sizing: border-box;
   height: 100%;
-  width: auto;
+  min-height: 360px;
+  width: 100%;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: visible;
   position: relative;
 }
-.panel {
+tabs-panels-collection["gesture"] *{
+  overflow: hidden;
+}
+/* tabs-panels-collection::-webkit-scrollbar{
+	width: 0;
+	height: 0;
+} */
+tab-panel {
   flex: 0 0 auto;
-  position: relative;
+  position: absolute;
+  left:0;top:0;
   width: 100%;
-  opacity: 0;
   height: 100%;
-  overflow-y: auto;
-  transition: opacity 0.325s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.325s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  overflow-y: hidden;
+  transition: opacity 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
+  transform: translateX(100%);
 }
-.panel.active {
-  opacity: 1;
-}
-.panel.hide {
-  opacity: 1;
-  z-index: -1;
-}
-.panel > h3 {
-  margin: 8px;
-}
-/* tabs bar in card */
-.card > #tabsBar {
-  border-bottom: 1px solid rgba(0,0,0,.12)
-}
-.card > #tabsBar > tab > label {
-  color: #000;
-  transition: opacity 0.225s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card > #tabsBar > tab > label.active {
-  color: #4aa;
-  color: var(--primary);
-  opacity: 1;
-}
-.card > #tabsBar > span {
-  border-color: #4aa;
-  border-color: var(--primary);
-}
-.card #panels{
-  padding: 0!important;
-  width: auto;
-display: flex}
-.card .panel{
+tab-panel.active {
   position: relative;
-  box-sizing: border-box;
-  flex: 0 0 auto
+  transform: translateX(0);
+  opacity: 1;
+  overflow-y: auto;
 }
-.card .panel.hide{
-  transform: none;
+tab-panel.left.hide {
+  transform: translateX(-100%);
+}
+tab-panel.right.hide {
+  /* default */
+}
+card tabs-bar{
+  border-bottom: 1px solid rgba(0,0,0,.12)
 }

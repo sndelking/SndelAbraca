@@ -19,13 +19,27 @@ button {
 button:disabled {
   opacity: 0.3;
   box-shadow: none;
+  cursor: not-allowed;
+}
+button[loading]:disabled {
+  opacity: 1;
 }
 button[primary],
-button[primary].icon{
+button[primary].icon {
   color: var(--primary, #5bc5be);
 }
-button[primary].raised{
+button[primary].raised,
+button[primary].fab {
   background-color: var(--primary, #5bc5be);
+  color: #fff;
+}
+button[accent],
+button[accent].icon {
+  color: var(--accent, #d75ba6);
+}
+button[accent].raised,
+button[accent].fab {
+  background-color: var(--accent, #d75ba6);
   color: #fff;
 }
 /* button shade for pressing */
@@ -84,9 +98,8 @@ button.raised:active,
 button.raised:hover {
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-button.raised[primary] shade{
+button.raised[primary] shade {
   background-color: #ccc;
-  
 }
 @media (max-width: 1024px) {
   button.raised {
@@ -98,52 +111,13 @@ button.raised[primary] shade{
   }
 }
 
-
-
-.card-part button:not(.icon) {
-  float: right;
-  margin-bottom: -2px;
-}
-.card-part button:not(.icon):first-of-type {
-  margin-right: -2px;
-}
-.card-part button.icon {
-  margin: auto 0;
-}
-button.raised.primary {
-  background-color: var(--primary);
-  background-color: #5bc5be;
-  color: #fff;
-}
-button.flat.primary {
-  background-color: transparent;
-  color: var(--primary, #5bc5be);
-}
-button.accent {
-  background-color: #f48;
-  background-color: var(--accent);
-  color: #fff;
-}
-h3 > button.icon {
-  margin-top: -8px;
-}
-button.icon.left {
-  float: left;
-}
-button.icon.right {
-  float: right;
-}
-FAB {
+/* FAB */
+button.fab {
   position: fixed;
   right: 24px;
-  bottom: 36px;
-  width: 64px;
-  height: 64px;
-  z-index: 12;
-}
-button.FAB {
-  margin: 4px;
+  bottom: 28px;
   padding: 0;
+  margin: 0;
   width: 56px;
   height: 56px;
   line-height: 56px;
@@ -153,4 +127,12 @@ button.FAB {
   background-repeat: no-repeat;
   z-index: 12;
   transform: scale(1, 1);
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+button.fab:active,
+button.fab:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+button.fab[hidden] {
+  transform: scale(0, 0);
 }

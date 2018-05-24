@@ -5,12 +5,13 @@ ripple {
   background-color: #000;
   opacity: 0;
   transform-origin: center;
+}
+button:not(.icon)[dark]>ripple,
+button:not(.icon)[primary]>ripple,
+button.icon[light]>ripple {
   background-color: #fff;
 }
-[dark] ripple {
-  background-color: #000;
-}
-button.icon[primary] ripple {
+button.icon[primary]>ripple {
   background-color: var(--primary, #5bc5be);
 }
 ripple.blooming {

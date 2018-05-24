@@ -1,4 +1,8 @@
-$(document).ready(gameInitialize);
+
+
+window.addEventListener("load", ()=>{
+	// gameInitialize();
+})
 const $roomID = window.location.href.split('/').slice(-1)[0];
 var $room = null;
 var $self = null;

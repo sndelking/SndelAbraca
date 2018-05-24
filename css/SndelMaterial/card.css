@@ -1,20 +1,20 @@
 /* card collection */
 card-collection {
   box-sizing: border-box;
-  flex: 1 1 auto;
+  flex: 1 1 480px;
   max-width: 480px;
 }
 layout card-collection {
-  margin: 0 4px;
+  margin: 4px 4px;
 }
 layout[gutter="2"] card-collection {
-  margin: 0 8px;
+  margin: 4px 8px;
 }
 layout[gutter="3"] card-collection {
-  margin: 0 12px;
+  margin: 4px 12px;
 }
 layout[gutter="4"] card-collection {
-  margin: 0 20px;
+  margin: 4px 20px;
 }
 
 /* card */
@@ -29,6 +29,16 @@ card {
   transition: all 0.225s ease-in-out;
   z-index: 2;
   /* animation: collectFromBottom 0.225s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+card:first-of-type {
+  margin-top: 0;
+}
+card:last-of-type {
+  margin-bottom: 0;
+}
+card[primary] {
+  background-color: var(--primary, #5bc5be);
+  color: #fff;
 }
 @media (max-width: 1024px) {
   card {
@@ -49,86 +59,12 @@ card-actions {
   display: flex;
   padding: 4px;
   justify-content: flex-end;
+  align-items: center;
 }
 card-actions button {
   margin: 4px;
 }
-card.primary > .card-part {
-  background-color: #4aa;
-  background-color: var(--primary);
-  color: #fff;
-}
-card.error > .card-part {
-  background-color: #ea4;
-  background-color: var(--error);
-  color: #fff;
-}
-cardCollection > .card {
-  flex: 1;
-  margin: 4px;
-}
-.card > img.left {
-  float: left;
-  height: 100%;
-}
-.card > img.top {
-  position: relative;
-  width: 100%;
-  display: block;
-}
-.cardSpliding {
-  margin-top: 0;
-  animation: cardSpliding 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-}
-@keyframes cardSpliding {
-  from {
-    margin-top: -8px;
-  }
-  to {
-    margin-top: 0;
-  }
-}
-.cardCombining {
-  margin-top: -8px;
-  animation: combining 0.195s cubic-bezier(0.4, 0, 0.2, 1);
-}
-@keyframes combining {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: -8px;
-  }
-}
-.card-part {
-  position: relative;
-  max-width: 100%;
-  padding: 8px;
-  background-color: #fff;
-  opacity: 1;
-  overflow: hidden;
-  transition: all 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cardTabel {
-  position: relative;
-  width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-.cardFullScreen {
-  margin: 0 auto 8px auto;
-  width: 100%;
-  max-width: 100%;
-}
-@media (min-width: 1024px) {
-  .cardFullScreen {
-    margin: 8px auto;
-    max-width: 512px;
-  }
-}
-.cardFullScreen > .card-part {
-  padding: 16px;
-}
+
 /* card-contents*/
 
 card-contents {
@@ -137,15 +73,37 @@ card-contents {
 }
 
 card-title {
-  display: inline-block;
+  display: block;
   font-size: 24px;
   padding-top: 8px;
+  font-weight: 600;
 }
 card-subtitle {
+  display: block;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.54);
+  padding: 4px 0;
 }
 card-title.small {
-  font-size: 14px;
+  font-size: 16px;
   padding-top: 0;
+}
+
+/* card image */
+card img {
+  display: block;
+}
+card img.hori-stretch + card-contents {
+  padding-top: 8px;
+}
+card img.hori-stretch {
+  width: 100%;
+}
+card.hori-layout {
+  display: flex;
+  align-items: flex-start;
+}
+card.hori-layout img.verti-stretch {
+  flex: 0 0 auto;
+  height: 100%;
 }

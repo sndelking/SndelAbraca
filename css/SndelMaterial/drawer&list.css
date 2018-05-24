@@ -1,99 +1,122 @@
-
 /*drawer*/
-.drawer {
-  height: 200%;
+drawer-nav {
+  height: 100%;
   width: 320px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 16;
-  background-color: #fefefe;
+  background: #fefefe;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   outline: none;
-}
-.drawer[state="on"] {
-  transform: translate(0, 0);
-  transition: transform 0.225s cubic-bezier(0, 0, 0.2, 1);
-}
-.drawer[state="off"] {
   transform: translate(-340px, 0);
-  transition: transform 0.195s cubic-bezier(0.4, 0, 1, 1);
+  transition: transform 0.195s ease-in;
+  overflow: hidden;
 }
-.drawerTheme {
-  height: 104px;
-  width: 288px;
-  float: top;
-  background-position: center;
-  background-size: cover;
-  padding: 16px;
+drawer-nav[state="on"] {
+  transform: translate(0, 0);
+  transition: transform 0.225s ease-out;
+}
+drawer-nav[state="off"] {
+  /* default */
+}
+drawer-nav-header {
+  display: block;
+  height: 180px;
+  width: 320px;
+  background: url("") center top / 100% auto no-repeat;
   color: #fff;
   font-size: 24px;
   font-weight: bold;
 }
+@media (min-width: 1024px) {
+  drawer-nav {
+    position: relative;
+    flex: 0 0 auto;
+    width: 0;
+    transform: none;
+    transition: width 0.195s ease-in;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
+  }
+  drawer-nav[state="on"] {
+    width: 256px;
+    transform: none;
+    transition: width 0.225s ease-out;
+  }
+  drawer-nav-header {
+    height: 64px;
+    width: 256px;
+  }
+  drawer-nav content-area {
+    width: 256px;
+  }
+}
+drawer-nav content-area {
+  display: block;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  width: 320px;
+}
 /*list*/
-.list {
+list {
+  position: fixed;
   background: #fefefe;
-  border-radius: 2px;
   overflow: hidden;
-  z-index: 4;
+  z-index: 24;
   height: auto;
   width: auto;
   outline: none;
-  opacity: 0;
-  z-index: 24;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-}
-.list[state="on"] {
+  transform-origin: left top;
+  padding: 8px 0;
+  opacity: 0;
+  box-sizing: border-box;
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
-  transition: max-height 0.375s 0.125s cubic-bezier(0.4, 0, 0.2, 1),
-    max-width 0.375s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.375s cubic-bezier(0.4, 0, 0.2, 1),
-    padding 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  /* default state=off */
+  visibility: hidden;
+  margin: 0;
+}
+list[state="on"] {
   opacity: 1;
+  visibility: visible;
+  border-radius: 2px;
+  margin: -8px;
+  transition: max-width 0.295s ease-in, max-height 0.055s 0.275s ease-in,
+    border-radius 0.275s ease-in, padding 0.055s 0.225s ease-in,
+    margin 0.055s 0.225s ease-in, opacity 0.225s ease-in, visibility 0s;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
 }
-.list[state="off"] {
-  box-shadow: none;
-  max-width: 0;
-  max-height: 0;
-  transition: max-height 0.375s cubic-bezier(0.4, 0, 0.2, 1),
-    max-width 0.375s 0.125s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.375s 0.125s cubic-bezier(0.4, 0, 0.2, 1),
-    padding 0.375s 0.125s cubic-bezier(0.4, 0, 0.2, 1); 
+list[state="off"] {
+  opacity: 0;
+  padding: 0;
+  border-radius: 50%;
+  transition: max-height 0.295s ease-out, max-width 0.055s 0.275s ease-out,
+    border-radius 0.055s 0.275s ease-out, padding 0.055s 0.225s ease-out,
+    margin 0.055s 0.225s ease-out, opacity 0.33s 0.225s ease-out,
+    visibility 0.575s 0s;
 }
-.drawer > button,
-.list > button {
+
+drawer-nav button,
+list button {
+  flex: 0 0 auto;
   height: 48px;
   width: 100%;
-  text-align: left;
+  display: flex;
   margin: 0;
-  margin-top: 8px;
   padding: 0 16px;
   border-radius: 0;
   min-width: 112px;
+  justify-content: flex-start;
+  align-items: center;
 }
-.list > button{
+list button {
   width: auto;
-  transition: opacity 0.275s .375s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.list[state="on"] > button:not(:disabled){
-  opacity: 1;
-}
-.list[state="off"] > button{
-  opacity: 0;
-}
-.drawer > button + button,
-.list > button + button {
-  margin-right: 0;
-  margin-top: 0;
-}
-.list button:last-of-type {
-  margin-bottom: 8px;
-}
-.drawer .icon{
-  color: rgba(0,0,0,.54);
-  margin-right: 32px;}
-.list .icon {
+drawer-nav button .icon,
+list button .icon {
+  color: rgba(0, 0, 0, 0.54);
   margin-right: 32px;
+  line-height: 24px;
 }

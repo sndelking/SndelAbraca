@@ -8,13 +8,22 @@ input {
   font-size: 16px;
   outline: none;
   caret-color: var(--primary, #5bc5be);
+  height: 16px;
+  background-color: transparent;
+  color: inherit
 }
-
+card[primary] input{
+  border-color: rgba(255, 255, 255, 0.7);
+  caret-color: #fff;
+}
+card[primary] input:focus{
+  border-color: #fff;
+}
 .text-field {
   width: 100%;
   margin: 16px 0 8px 0;
   position: relative;
-  padding: 16px 0 28px;
+  padding-top: 16px;
 }
 
 .text-field label {
@@ -24,14 +33,61 @@ input {
   top: 0;
   transition: all 0.275s ease-in-out;
   color: rgba(0, 0, 0, 0.54);
-  transform: translateY(24px)
+  transform: translateY(24px);
 }
-input:focus ~ label {
+card[primary] .text-field label,
+card[primary] input:not(:invalid):not(:focus) ~ label {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* focus */
+/* valid */
+input:focus {
+  padding-bottom: 7px;
+  border-width: 2px;
+  border-color: #5bc5be;
+}
+input:focus ~ label,
+input:not(:invalid):not(:focus) ~ label {
   font-size: 12px;
   color: var(--primary, #5bc5be);
-  transform: translateY(0)
+  transform: translateY(0);
 }
-
+/* error */
+input:invalid[visited]:not(:focus) {
+  padding-bottom: 7px;
+  border-color: #ff1744;
+  border-width: 2px;
+}
+input:invalid[visited]:not(:focus) ~ label {
+  font-size: 12px;
+  color: var(--error, #ff1744);
+  transform: translateY(0);
+}
+.text-field message {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  display: block;
+  height: 12px;
+  line-height: 1;
+}
+.text-field message.error {
+  color: var(--error, #ff1744);
+}
+@media (min-width: 1024px) {
+  input {
+    padding: 4px 0 8px 0;
+    font-size: 13px;
+    height: 13px;
+  }
+  .text-field message {
+    margin-top: 4px;
+  }
+  .text-field label {
+    font-size: 13px;
+    transform: translateY(17px);
+  }
+}
 /* input[type="text"] {
   position: absolute;
   height: 32px;
@@ -57,8 +113,8 @@ underText {
   vertical-align: middle;
 } */
 /* underText .icon { */
-  /*font-size: 12px;*/
-  /* line-height: 12px;
+/*font-size: 12px;*/
+/* line-height: 12px;
   height: 12px;
   width: 12px;
   display: inline-block;
@@ -70,8 +126,8 @@ underText {
   line-height: 12px;
   height: 12px;
   width: 12px; */
-  /*vertical-align: middle;*/
-  /* display: inline-block;
+/*vertical-align: middle;*/
+/* display: inline-block;
 }
 underText.warnning,
 underText.warnning .icon:before {

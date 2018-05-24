@@ -107,7 +107,7 @@ export default class Room {
 		}
 		setTimeout("gameSys.rooms[" + this.id + "].checkPlayer()", 3000);
 	};
-	excuteCard(cardNo, userID) {
+	executeCard(cardNo, userID) {
 		let user = this.players[userID];
 		let status = this.nowPlayer == userID ? user.removeCard(cardNo) : 2
 		/* status:
@@ -217,15 +217,3 @@ export default class Room {
 		}
 	};
 };
-
-/*
-get cards [0, playerPosition, getCard1, getCard2, ...]
-used cards [1, playerPosition, usedCard, succeed, random, target1, target2, ...]
-dead [2, playerPosition]
-addPlayer [3, playerPosition, playerName]
-removePlayer [4, playerPosition]
-get owl [5, playerPositon, owlCard]
-now turn [6, playerPostion]
-endable [7, playerPosition]
-start [8]
-*/

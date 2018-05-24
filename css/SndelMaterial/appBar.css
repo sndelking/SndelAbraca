@@ -5,12 +5,11 @@ header {
   flex: 0 0 auto;
   transition: all 0.275s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  display: flex;
-  align-items: center;
+  box-sizing: border-box;
 }
 header.color {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-image: none!important;
+  background-image: none !important;
   z-index: 4;
 }
 header::after {
@@ -18,11 +17,18 @@ header::after {
   height: 100%;
   width: 100%;
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: -1;
 }
 header.color:after {
   background-color: #4aa;
   background-color: var(--primary);
+}
+app-bar {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
 }
 app-title {
   flex: 1 1 auto;
@@ -32,20 +38,23 @@ app-title {
   font-size: 20px;
 }
 @media (orientation: landscape) and (max-height: 480px) {
-  header {
+  app-bar {
     height: 48px;
   }
-  header app-title {
+  app-bar app-title {
     line-height: 48px;
   }
 }
 @media (min-width: 480px) {
-  header {
+  app-bar {
     height: 64px;
   }
-  header app-title {
+  app-bar app-title {
     line-height: 64px;
   }
+}
+button + app-title {
+  padding-left: 8px;
 }
 /* tools bar */
 tools-bar {
@@ -65,4 +74,6 @@ flexible-space {
 content {
   flex: 1 1 auto;
   overflow: auto;
+  position: relative;
+  display: flex;
 }

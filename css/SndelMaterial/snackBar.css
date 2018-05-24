@@ -1,0 +1,51 @@
+/*snackBar*/
+snack-bar {
+  font-size: 14px;
+  position: fixed;
+  z-index: 4;
+  background-color: #323232;
+  border-radius: 2px;
+  max-width: 568px;
+  min-width: 288px;
+  margin: auto;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  float: left;
+  transform: translateY(0);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16), 0 1px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16),
+    0 1px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  transition: all 0.195s ease-in;
+  opacity: 0;
+}
+snack-bar[state="on"] {
+  transition: all 0.225s ease-out;
+  transform: translateY(-56px);
+  opacity: 1;
+}
+snack-bar[state="off"] {
+  /* default */
+}
+snack-bar-content {
+  margin: 0;
+  padding: 12px 24px;
+  color: #fff;
+  min-height: 48px;
+  line-height: 24px;
+  text-align: left;
+  transition: opacity 0.225s 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  opacity: 0;
+}
+snack-bar[state="on"] snack-bar-content {
+  opacity: 1;
+}
+snack-bar[state="off"] snack-bar-content {
+}
+snack-bar-actions {
+  flex: 0 0 auto;
+}

@@ -1,0 +1,123 @@
+/*loading*/
+loading.circular {
+  width: 36px;
+  height: 36px;
+  animation: loading-circular 1.6s linear infinite;
+  position: fixed;
+  z-index: 12;
+  pointer-events: none
+}
+[accent] loading-circle-left{
+  border: 4px solid var(--primary, #5bc5be);
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+[accent] loading-circle-right {
+  border: 4px solid var(--primary, #5bc5be);
+  border-right: 4px solid transparent;
+  border-top: 4px solid transparent;
+}
+[primary] loading-circle-left{
+  border: 4px solid var(--accent, #d75ba6);
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+[primary] loading-circle-right {
+  border: 4px solid var(--accent, #d75ba6);
+  border-right: 4px solid transparent;
+  border-top: 4px solid transparent;
+}
+@keyframes loading-circular {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+loading-circle-layout {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: loading-circle-layout 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes loading-circle-layout {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  75% {
+    transform: rotate(540deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+loading-layout-left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+loading-layout-right {
+  float: right;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+loading-circle-left {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  animation: loading-circle-left 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes loading-circle-left {
+  0% {
+    transform: rotate(40deg);
+  }
+  50% {
+    transform: rotate(-100deg);
+  }
+  100% {
+    transform: rotate(40deg);
+  }
+}
+loading-circle-right {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  width: 200%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 50%;
+  transform: rotate(-310deg);
+  animation: loading-circle-right 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes loading-circle-right {
+  0% {
+    transform: rotate(-310deg);
+  }
+  50% {
+    transform: rotate(-170deg);
+  }
+  100% {
+    transform: rotate(-310deg);
+  }
+}

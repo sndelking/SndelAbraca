@@ -1,0 +1,10 @@
+bottom-nav {
+  flex: 0 0 auto;
+  width: 100%;
+  background: #fff;
+  height: 56px;
+  z-index: 4;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16), 0 1px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16),
+    0 1px 6px rgba(0, 0, 0, 0.23);
+}

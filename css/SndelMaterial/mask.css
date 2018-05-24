@@ -1,0 +1,25 @@
+/* mask */
+mask {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  z-index: 14;
+  transition: opacity 0.195s cubic-bezier(0.4, 0, 1, 1);
+}
+mask[state="on"] {
+  opacity: 0.32;
+  transition: opacity 0.225s cubic-bezier(0, 0, 0.2, 1);
+}
+mask[state="off"] {
+}
+mask.formal {
+  pointer-events: none;
+  background-color: transparent;
+}
+mask.transparent {
+  pointer-events: painted;
+  background-color: transparent;
+}

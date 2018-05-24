@@ -16,6 +16,7 @@
 - Use Card
     - type: 6
     - playerIp
+    - cardNo (Number)
     - status (Number):
         - 0 : succeed
         - 1 : failed

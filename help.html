@@ -5,220 +5,225 @@
 	<title>help</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=375, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_545564_p6xb7tg5aui60f6r.css">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_545564_vnk5ofkiw4uz0k9.css">
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/SndelMaterial.css">
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/SndelMaterial.js"></script>
+	<!-- <script src="js/jquery-3.2.1.js"></script> -->
+	<script src="js/SndelMaterial_New.js"></script>
 	<script src="js/common.js"></script>
 </head>
 
 <body>
-	<div id="appBar" class="color">
-		<toolsBar>
-			<button class="icon arrow-left left" style="color: #fff" ripple="light" onclick="back()"></button>
-			<h3>帮助</h3>
-		</toolsBar>
-		<div id="tabsBar">
-			<tab ripple="light">
-				<label>概述</label>
-			</tab>
-			<tab ripple="light">
-				<label>基本模式</label>
-			</tab>
-			<tab ripple="light">
-				<label>卡牌介绍</label>
-			</tab>
-		</div>
-	</div>
-	<div id="panels">
-		<div class="panel active">
-			<div class="card cardFullScreen">
-				<img class="top" src="img/storyBackground.jpg"></img>
-				<div class="card-part">
-					<h3>背景</h3>
-					<p>很久很久以前，在一个充满魔法的大陆，五位魔法师为了各自的目的，展开了一场声势浩大的战争。</p>
-					<p>在游戏中，你扮演着这五位魔法师其中的一位，施展魔法对抗敌人。</p>
-					<p>魔法有着强大的力量，但魔法总是伴随着代价。魔法施展失败之后，你面临的将是沉痛的代价。</p>
-				</div>
-			</div>
-		</div>
-		<div class="panel hide">
-			<h3>游戏规则</h3>
-			<div class="card">
-				<img class="top" src="img/basic.svg"></img>
-				<div class="card-part">
-					<h4>简单来说</h4>
-					<p>你可以看到所有人的牌，但是看不到自己的牌。</br>
-						每回合你要做的就是猜自己的牌。</p>
-				</div>
-			</div>
-			<div class="card">
-				<img class="top" src="img/win.svg"></img>
-				<div class="card-part">
-					<h4>胜利条件</h4>
-					<p>所有牌用完后，
-						<label class="icon heart">体力</label>最高的角色是优胜者。多名
-						<label class="icon heart">体力</label>相等并且最高的角色并列胜利。</br>
-						在牌用完前成为唯一存活的角色直接胜利。</p>
-				</div>
-			</div>
-			<div class="card">
-				<img class="left" src="img/cardPrepare.svg"></img>
-				<div class="card-part">
-					<h4>牌准备</h4>
-					<p>1、洗牌；</p>
-					<p>2、移出4张
-						<label class="icon eye">预知牌</label>，使用
-						<label class="icon owl">4 猫头鹰</label>的玩家可以得到一张，他可以随时查看但不能使用；</p>
-					<p>3、其余作为
-						<label class="icon buffer">牌堆</label>。</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-part">
-					<h4>玩家准备</h4>
-					<p>1、初始
-						<label class="icon heart">体力</label>为6；</p>
-					<p>2、初始
-						<label class="icon cards">手牌</label>为4，自己的手牌只有自己不能看；</p>
-					<p>3、
-						<label class="icon heart">体力</label>为0时，死亡，弃置所有
-						<label class="icon cards">手牌</label>。</p>
-					<p>4、
-						<label class="icon thumb-up">成功</label>使用一张牌时，从
-						<label class="icon buffer">牌堆</label>顶摸一张牌；</p>
-					<p>4、没有
-						<label class="icon cards">手牌</label>时不用出牌，但仍然要在场上承受其他角色造成的伤害，直到游戏结束。</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-part">
-					<h4>游戏开始</h4>
-					<p>从1号位开始，轮流执行：</p>
-					<p>1、如果有
-						<label class="icon cards">手牌</label>，
-						<label class="icon abraca">声明</label>一张牌；否则结束回合，下家开始；</p>
-					<p>2、若有这张牌，打出，执行牌的
-						<label class="icon thumb-up">成功</label>，从
-						<label class="icon buffer">牌堆</label>顶摸一张牌；</p>
-					<p>3、若没有这张牌，执行牌的
-						<label class="icon thumb-down">失败</label>；</p>
-					<p>4、结束，下家开始。</p>
-				</div>
-			</div>
-		</div>
-		<div class="panel hide">
-			<h3>基本卡牌</h3>
-			<cardCollection>
-				<div class="card flodable">
-					<img class="left" src="img/card/1.jpg"></img>
-					<div class="card-part">
-						<h4>远古巨龙</h4>
-						<brife>召唤沉睡千年的巨龙摧毁世间一切。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你对除你以外的所有角色造成随机1~3点的伤害。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去随机1~3点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>1</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/2.jpg"></img>
-					<div class="card-part">
-						<h4>黑暗幽灵</h4>
-						<brife>用黑魔法夺取人们的灵魂为自己续命。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你对除你以外的所有角色造成1点的伤害，你回复1点体力。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>2</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/3.jpg"></img>
-					<div class="card-part">
-						<h4>甜蜜的梦</h4>
-						<brife>魔法渗透睡眠，帮助治愈伤痛。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你回复随机1~3点体力。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>3</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/4.jpg"></img>
-					<div class="card-part">
-						<h4>猫头鹰</h4>
-						<brife>猫头鹰是一个先知必需的宠物。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你得到一张
-							<label class="icon previse">预知牌</label>。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>4</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/5.jpg"></img>
-					<div class="card-part">
-						<h4>闪电暴风雨</h4>
-						<brife>召唤局部地区的雷暴天气。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你对你的上家和下家各造成1点伤害。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>5</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/6.jpg"></img>
-					<div class="card-part">
-						<h4>暴风雪</h4>
-						<brife>从袖口吹出暴风雪。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你对你的上家造成1点伤害。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>6</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/7.jpg"></img>
-					<div class="card-part">
-						<h4>火球术</h4>
-						<brife>丢出掌心的火球。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你对你的下家造成1点伤害。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>7</p>
-					</div>
-				</div>
-				<div class="card flodable">
-					<img class="left" src="img/card/8.jpg"></img>
-					<div class="card-part">
-						<h4>魔法药水</h4>
-						<brife>几百种植物和动物组织熬成的药水，秘制配方，帮助治愈伤痛。</brife>
-						<p>
-							<label class="icon thumb-up">成功</label>你回复1点体力。</p>
-						<p>
-							<label class="icon thumb-down">失败</label>你失去1点体力。</p>
-						<p>
-							<label class="icon cards">牌堆中的数量</label>8</p>
-					</div>
-				</div>
-			</cardCollection>
-		</div>
-	</div>
+	<header class="color">
+		<app-bar>
+			<button class="icon arrow-left" light style="color: #fff" onclick="back()"></button>
+			<app-title>帮助</app-title>
+		</app-bar>
+		<tabs-bar panels-collection-id="help-panels">
+			<tab>概述</tab>
+			<tab>卡牌介绍</tab>
+			<tab>基本模式</tab>
+		</tabs-bar>
+	</header>
+	<content>
+		<tabs-panels-collection id="help-panels">
+			<tab-panel>
+				<layout>
+					<card-collection>
+						<card>
+							<img src="img/storyBackground.jpg" class="hori-stretch">
+							<card-contents>
+								<card-title>游戏背景</card-title>
+								<p>很久很久以前，在一个充满魔法的大陆，五位魔法师抱着各自的目的，展开了一场声势浩大的战争。</p>
+								<p>游戏中，你扮演着这他们中的一员，对抗你的敌人。</p>
+								<p>然而，魔法有着强大的力量，却总伴随着代价。</p>
+							</card-contents>
+						</card>
+					</card-collection>
+				</layout>
+			</tab-panel>
+			<tab-panel>
+				<layout>
+					<card-collection>
+						<card class="hori-layout">
+							<img src="img/card/1.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">远古巨龙</card-title>
+								<card-subtitle>召唤沉睡千年的巨龙摧毁世间一切。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你对除你以外的所有角色造成随机1~3点的伤害。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去随机1~3点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>1</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/2.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">黑暗幽灵</card-title>
+								<card-subtitle>用黑魔法夺取人们的灵魂为自己续命。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你对除你以外的所有角色造成1点的伤害，你回复1点体力。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去随机1~3点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>1</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/3.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">甜蜜的梦</card-title>
+								<card-subtitle>魔法渗透睡眠，帮助治愈伤痛。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你回复随机1~3点体力。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>3</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/4.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">猫头鹰</card-title>
+								<card-subtitle>猫头鹰是一个先知必需的宠物。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你得到一张
+									<label class="icon previse">预知牌</label>。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>4</p>
+							</card-contents>
+						</card>
+					</card-collection>
+					<card-collection>
+						<card class="hori-layout">
+							<img src="img/card/5.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">闪电暴风雨</card-title>
+								<card-subtitle>召唤局部地区的雷暴天气。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你对你的上家和下家各造成1点伤害。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>5</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/6.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">暴风雪</card-title>
+								<card-subtitle>从袖口吹出暴风雪。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你对你的上家造成1点伤害。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>6</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/7.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">火球术</card-title>
+								<card-subtitle>丢出掌心的火球。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你对你的下家造成1点伤害。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>7</p>
+							</card-contents>
+						</card>
+						<card class="hori-layout">
+							<img src="img/card/8.jpg" class="verti-stretch">
+							<card-contents>
+								<card-title class="small">魔法药水</card-title>
+								<card-subtitle>几百种植物和动物组织熬成的药水，秘制配方，帮助治愈伤痛。</card-subtitle>
+								<p>
+									<label class="icon thumb-up">成功</label>你回复1点体力。</p>
+								<p>
+									<label class="icon thumb-down">失败</label>你失去1点体力。</p>
+								<p>
+									<label class="icon cards">牌堆中的数量</label>8</p>
+							</card-contents>
+						</card>
+					</card-collection>
+				</layout>
+			</tab-panel>
+			<tab-panel>
+				<layout>
+					<card-collection>
+						<card>
+							<card-contents>
+								<card-title>简单来说</card-title>
+								<p>你可以看到所有人的牌，但是看不到自己的牌。</br>
+									每回合你要做的就是猜自己的牌。</p>
+							</card-contents>
+						</card>
+						<card>
+							<card-contents>
+								<card-title>胜利条件</card-title>
+								<p>所有牌用完后，
+									<label class="icon heart">体力</label>最高的角色是优胜者。多名
+									<label class="icon heart">体力</label>相等并且最高的角色并列胜利。</br>
+									在牌用完前，成为唯一存活的角色直接胜利。</p>
+							</card-contents>
+						</card>
+						<card>
+							<card-contents>
+								<card-title>牌准备</card-title>
+								<p>1、洗牌；</p>
+								<p>2、移出4张
+									<label class="icon eye">预知牌</label>，使用
+									<label class="icon owl">4 猫头鹰</label>的玩家可以得到一张，他可以随时查看但不能使用；</p>
+								<p>3、其余作为
+									<label class="icon buffer">牌堆</label>。</p>
+							</card-contents>
+						</card>
+						<card>
+							<card-contents>
+								<card-title>玩家准备</card-title>
+								<p>1、初始
+									<label class="icon heart">体力</label>为6；</p>
+								<p>2、初始
+									<label class="icon cards">手牌</label>为4，自己的手牌只有自己不能看；</p>
+							</card-contents>
+						</card>
+						<card>
+							<card-contents>
+								<card-title>游戏开始</card-title>
+								<p>从1号位开始，轮流执行：</p>
+								<p>1、如果有
+									<label class="icon cards">手牌</label>，
+									<label class="icon abraca">声明</label>一张牌；否则结束回合，下家开始；</p>
+								<p>2、
+									<label class="icon abraca">声明</label>后，若有这张牌，打出，执行牌的
+									<label class="icon thumb-up">成功</label>。</p>
+								<p>3、
+									<label class="icon abraca">声明</label>后，若没有这张牌，执行牌的
+									<label class="icon thumb-down">失败</label>，立即结束回合；</p>
+								<p>
+									<tag>连续施法</tag>成功打出牌后，可以回到步骤1，再
+									<label class="icon abraca">声明</label>一张牌，或者主动
+									<label class="icon skip-next">结束回合</label>。</p>
+								<p>
+									<tag>回合结束</tag>将
+									<label class="icon cards">手牌</label>补充到上限，
+									<label class="icon buffer">牌堆</label>不足时不再补牌。</p>
+								<p>
+									<tag>牌的结算</tag>牌结算过程中，任何角色
+									<label class="icon heart">体力</label>不足0时，暂停后续结算，优先判断游戏是否结束。</p>
+							</card-contents>
+						</card>
+					</card-collection>
+				</layout>
+			</tab-panel>
+		</tabs-panels-collection>
+	</content>
 </body>
-
 </html>

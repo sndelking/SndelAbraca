@@ -57,30 +57,30 @@
 	background: #4AA;
 }
 
-.game-card[number='0'] {
+game-card[number='0'] {
 	background-image: url(../img/card/0.jpg);
 }
-.game-card[number='1'] {
+game-card[number='1'] {
 	background-image: url(../img/card/1.jpg);
 }
-.game-card[number='2'] {
+game-card[number='2'] {
 	background-image: url(../img/card/2.jpg);
 }
-.game-card[number='3'] {
+game-card[number='3'] {
 	background-image: url(../img/card/3.jpg);
 }
-.game-card[number='4'] {
+game-card[number='4'] {
 	background-image: url(../img/card/4.jpg);
 }
-.game-card[number='5'] {
+game-card[number='5'] {
 	background-image: url(../img/card/5.jpg);
 }
-.game-card[number='6'] {
+game-card[number='6'] {
 	background-image: url(../img/card/6.jpg);
 }
-.game-card[number='7'] {
+game-card[number='7'] {
 	background-image: url(../img/card/7.jpg);
 }
-.game-card[number='8'] {
+game-card[number='8'] {
 	background-image: url(../img/card/8.jpg);
 }
