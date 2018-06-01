@@ -10,15 +10,19 @@ class Format {
                 ${rooms
                   .map(room => {
                     let playersIcon = new Array();
-                    for (let i=0;i<5;i++)
+                    for (let i = 0; i < 5; i++)
                       playersIcon.push(`<i class="icon account"
-                        style="${i<rooms.playersNum?'color:#5bc5be':'color:rgba(0,0,0,.3)'}">
+                        style="${
+                          i < room.playersNum
+                            ? "color:#5bc5be"
+                            : "color:rgba(0,0,0,.3)"
+                        }">
                     </i>`);
                     let playersIconStr = playersIcon.join("");
-                    return `<tr>
+                    return `<tr onclick="GetStart.setRoomId(${room.roomID})">
                         <td>${room.roomID}</td>
                         <td>${playersIconStr}</td>
-                        <td>${room.status==1?"已开始":"未开始"}</td>
+                        <td>${room.status == 1 ? "已开始" : "未开始"}</td>
                     </tr>`;
                   })
                   .join("")}
@@ -66,43 +70,23 @@ class Format {
     let innerContent = ``;
     for (let i = 0; i < 8; i++) {
       innerContent += `<div class='slot'>
-                                <div class='slot-text'>
-                                    <span>${cardName[i]}</span>
-                                    <span class='slot-text-used'>${
-                                      usedCards[i]
-                                    } / ${i + 1}</span>
-                                </div>
-                                <div class='slot-bar' style='width:${12.5 *
-                                  (i + 1)}%'>
-                                    <div class='slot-bar-used' style='width:${usedCards[
-                                      i
-                                    ] /
-                                      (i + 1) *
-                                      100}%; background-color: #${
-        cardColor[i]
+                        <div class='slot-text'>
+                            <span>${cardName[i + 1]}</span>
+                            <span class='slot-text-used'>${usedCards[i]} / ${i +
+        1}</span>
+                        </div>
+                        <div class='slot-bar' style='width:${12.5 * (i + 1)}%'>
+                            <div class='slot-bar-used' style='width:${usedCards[
+                              i
+                            ] /
+                              (i + 1) *
+                              100}%; background-color: #${
+        cardColor[i + 1]
       };'></div>
-                                </div>
-                            </div>`;
+                            </div>
+                        </div>`;
     }
-    return `<div class='card activities'>
-                    <div id="tabsBar">
-                        <tab ripple="light">
-                            <label>已用卡统计</label>
-                        </tab>
-                        <tab ripple="light">
-                            <label>游戏记录</label>
-                        </tab>
-                    </div>
-                    <div id="panels">
-                        <div class="panel active discard-pile">
-                            <h3>已用卡统计</h3>
-                            ${innerContent}
-                        </div>
-                        <div class="panel rightHide">
-                            <h3>游戏记录</h3>
-                        </div>
-                    </div>
-                </div>`;
+    return `<h3>已用卡统计</h3>${innerContent}`;
   }
   static reconnectCard(roomID) {
     return `<div class="card error">

@@ -1,6 +1,6 @@
 .empty-seat {
   box-shadow: none;
-  opacity: .3;
+  opacity: 0.3;
 }
 .player {
   display: flex;
@@ -57,34 +57,57 @@ pos {
   opacity: 0.54;
   flex: 0 0 auto;
 }
-.is-ready {
+.ready-ripple {
   position: absolute;
-  right: 0;
-  margin: auto 8px;
-  color: var(--primary, #5bc5be);
-  opacity: 0;
+  background-color: #5bc5be96;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  right: -28px;
+  top: -28px;
+  width: 112px;
+  height: 112px;
+  padding-right: 36px;
   font-size: 12px;
-  transition: opacity .275s ease-in-out;
-  display: none;
+  transition: all 0.475s ease-in-out;
+  opacity: 0;
+  transform: scale(0, 0);
+  box-sizing: border-box;
+  animation: inifital-waving 0.926s infinite alternate-reverse
+    ease-in-out;
 }
-.is-ready::before{
-  font-size: 24px;
-  margin-right: 4px;
-}
-.is-ready[value="true"] {
-  display: block;
+.ready-ripple[value="true"] {
   opacity: 1;
+  transform: scale(1, 1);
+}
+.ready-ripple.bloom {
+  animation: fill-blooming 1.275s ease-out;
+}
+@keyframes inifital-waving {
+  from {
+    width: 112px;
+    height: 112px;
+    top: -28px;
+    opacity: 1;
+  }
+  to {
+    width: 144px;
+    height: 144px;
+    top: -44px;
+    opacity: 0.72;
+  }
+}
+@keyframes inifital-waving {
 }
 
 /* Room Status */
 #room-status-records {
-	max-height: 420px;
+  max-height: 420px;
 }
 #room-status-records p {
   margin: 4px;
 }
-
-
 
 .shake {
   animation: shake 0.625s linear;
@@ -139,23 +162,17 @@ charactor {
 }
 game-cards {
   display: block;
-  position: relative;
   height: auto;
   width: 100%;
-  /* max-width: 364px; */
   overflow-x: scroll;
   overflow-y: hidden;
 }
-game-cards > collector {
-  display: block;
-  position: relative;
-  height: 145px;
+game-cards > wrapper {
+  display: flex;
+  flex-wrap: nowrap;
   width: 364px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  transition: height 0.225s cubic-bezier(0.4, 0, 0.2, 1);
 }
-game-cards > collector:empty {
+game-cards > wrapper:empty {
   height: 0;
 }
 game-card {

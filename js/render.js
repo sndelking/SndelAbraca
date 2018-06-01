@@ -1,91 +1,3 @@
-render = (room, self) => {
-  renderPlayers(room, self);
-  renderActivitiesCard(room);
-};
-renderPlayers = (room, self) => {
-  room.players.forEach((player, pos) => {
-    renderPlayer(player, room.status, self);
-  });
-};
-renderPlayer = (player, roomStatus, self) => {
-  renderPlayerBase(player, self);
-  renderPlayerInfo(player, roomStatus);
-  renderPlayerCards(player, roomStatus, self);
-};
-renderPlayerBase = (player, self) => {
-  if (player.pos != self && !this.player(player.pos).length) {
-    let renderPosition = (player.pos - ($self - 2)) % 5;
-    let node = Format.playerBase(player);
-    let leftPlayersCollector = $(".players-collector.left");
-    let rightPlayersCollector = $(".players-collector.right");
-    if (renderPosition < 2) leftPlayersCollector.append(node);
-    else if (renderPosition > 2) rightPlayersCollector.prepend(node);
-  }
-};
-renderPlayerface = (player, roomStatus) => {
-  this.player(player.pos)
-    .find("face")
-    .css(
-      "background-image",
-      Format.playerFace(roomStatus ? player.charactor : 0)
-    );
-};
-renderPlayerInfo = (player, roomStatus) => {
-  let gameInfo = this.player(player.pos).find("game-info");
-  if (roomStatus) gameInfo.html(Format.playerGameInfo(player));
-  else gameInfo.html("");
-};
-renderPlayerCards = (player, roomStatus, self) => {
-  if (player.pos == self) return;
-  let cardsCollector = this.player(player.pos).find("collector");
-  let addedCardsIndexList = [];
-  let removedCardsIndexList = this.player(player.pos)
-    .find(".game-card")
-    .get()
-    .map(cardDOM => Number(cardDOM.getAttribute("number")));
-  player.cards.forEach(card => {
-    let newCardIndex = removedCardsIndexList.indexOf(card);
-    if (newCardIndex == -1) addedCardsIndexList.push(card);
-    else removedCardsIndexList.splice(newCardIndex, 1);
-  });
-  addedCardsIndexList.forEach(card => {
-    this.player(player.pos)
-      .find("collector")
-      .append(Format.card(card));
-  });
-  removedCardsIndexList.forEach(card => {
-    let cardJqNode = this.player(player.pos)
-      .find(`[number='${card}']`)
-      .eq(0);
-    cardFadeOut(cardJqNode);
-    abracaSucceed(card, cardJqNode.offset().top, cardJqNode.offset().left);
-  });
-};
-renderActivitiesCard = room => {
-  if (room.status)
-    if (!$(".discard-pile").length) {
-      $("body").append(Format.activitiesCard(room.usedCards));
-      initTabsBar();
-      initTabPanels();
-    } else {
-      $(".discard-pile")
-        .find(".slot")
-        .map(function(idx) {
-          $(this)
-            .find(".slot-text-used")
-            .html(`${room.usedCards[idx]} / ${idx + 1}`);
-          $(this)
-            .find(".slot-bar-used")
-            .width(`${room.usedCards[idx] / (idx + 1) * 100}%`);
-        });
-    }
-  else $(".discard-pile").remove();
-};
-renderRecords = room => {
-  if (room.status) {
-    if (!$(".records").length) $("body").append(Format.records);
-  } else $(".records").remove();
-};
 class Render {
   static renderSelf(res) {
     let self = getElementById("self");
@@ -94,21 +6,37 @@ class Render {
     self.findByTagName("POS")[0].innerHTML = self.data.pos + 1;
     Game.selfPos = res.playerPos;
   }
-  static renderSeats(res) {
+  static initSeats(res) {
     let seats = Game.seats().filter(seat => seat.getAttribute("id") != "self");
     seats.forEach((seat, seatIdx) => {
       seat.findByTagName("POS")[0].innerHTML =
         seatIdx + (seatIdx >= res.playerPos ? 2 : 1);
+      let readyRipple = createElement("ripple")
+      readyRipple.className = "ready-ripple"
+      readyRipple.innerHTML = "已准备";
+      seat.append(readyRipple);
     });
+  }
+  static renderSeats(res) {
+    // if(res.room.status == 0)
   }
   static renderRoom(res) {
     this.renderRecords(res);
     this.renderBasicPlayers(res);
-    if (res.room.status == 1) this.renderGamePlayers(res);
+    if (res.room.status == 1) {
+      this.renderGamePlayers(res);
+      this.renderUsedCardStatic(res);
+    }
   }
   static renderRecords(res) {
-    let eplandPlayer = player => {
+    let explandPlayer = player => {
       return `<tag>${player.name}</tag>`;
+    };
+    let explandCard = card => {
+      return `<label
+        class="icon ${cardIconName[card]}"
+        style="color:#${cardColor[card]}">
+        ${cardName[card]}</label>`;
     };
     let explandRecord = record => {
       let player = res.room.players.find(
@@ -116,17 +44,21 @@ class Render {
       );
       switch (record.type) {
         case 1:
-          return `${eplandPlayer(player)}加入房间。`;
+          return `${explandPlayer(player)}加入房间。`;
         case 2:
-          return `${eplandPlayer(player)}离开了房间。`;
+          return `${explandPlayer(player)}离开了房间。`;
         case 3:
-          return `${eplandPlayer(player)}已准备。`;
+          return `${explandPlayer(player)}已准备。`;
         case 4:
-          return `${eplandPlayer(player)}取消准备。`;
+          return `${explandPlayer(player)}取消准备。`;
         case 5:
           return "所有人已准备，游戏开始了。";
+        case 6:
+          return `${explandPlayer(player)}施展${explandCard(record.cardNo)}${
+            record.status ? "失败了" : "成功了"
+          }。`;
         case 7:
-          return `${eplandPlayer(player)}结束了回合。`;
+          return `${explandPlayer(player)}结束了回合。`;
       }
     };
     if (!Game.room.records) Game.room.records = [];
@@ -134,6 +66,7 @@ class Render {
       let node = document.createElement("p");
       node.innerHTML = explandRecord(record);
       document.getElementById("room-status-records").prepend(node);
+      if (record.type == 6) this.renderAnimation(res, record);
     });
     Game.room.records = res.room.records;
   }
@@ -147,7 +80,7 @@ class Render {
       if (playerDOM.id != "self")
         if (playerDOM.data.isReady != player.isReady)
           playerDOM
-            .findByClassName("is-ready")[0]
+            .findByClassName("ready-ripple")[0]
             .setAttribute("value", player.isReady);
       playerDOM.data = {
         ...playerDOM.data,
@@ -222,8 +155,10 @@ class Render {
     let gameCardsDOM = playerDOM.findByTagName("GAME-CARDS")[0];
     if (cards.length && !gameCardsDOM) {
       gameCardsDOM = createElement("game-cards");
+      gameCardsDOM.innerHTML = "<wrapper></wrapper>";
       playerDOM.append(gameCardsDOM);
     }
+    let gameCardsWrapprtDOM = gameCardsDOM.findByTagName("WRAPPER")[0];
     let cardDOMs = gameCardsDOM.findByTagName("GAME-CARD");
     let addedCards = cards.map(card => card);
     let removedCards = cardDOMs.map(card =>
@@ -231,19 +166,21 @@ class Render {
     );
     for (let ai = 0; ai < addedCards.length; ai++) {
       let card_added = addedCards[ai];
-      removedCards.forEach((card_removed, card_removed_idx) => {
+      for (let ri = 0; ri < removedCards.length; ri++) {
+        let card_removed = removedCards[ri];
         if (card_removed == card_added) {
-          removedCards.splice(card_removed_idx, 1);
+          removedCards.splice(ri, 1);
+          ri--;
           addedCards.splice(ai, 1);
           ai--;
-          return;
+          break;
         }
-      });
+      }
     }
     addedCards.forEach(card_added => {
       let cardDOM = createElement("game-card");
       cardDOM.setAttribute("number", card_added);
-      gameCardsDOM.append(cardDOM);
+      gameCardsWrapprtDOM.append(cardDOM);
     });
     removedCards.forEach((card_removed, ri) => {
       let cardDOM = cardDOMs.find(
@@ -258,20 +195,26 @@ class Render {
       cardDOM.addEventListener("animationend", cardCollapse);
     });
   }
-  // static renderAbracaAnimation(res, cardNum) {
-  //   if()
-  //   let cardDOMs = gameCardsDOM.findByTagName("GAME-CARD");
-  //   let cardDOM = cardDOMs.find(
-  //     dom => Number(dom.getAttribute("number")) == cardNum
-  //   );
-  // }
+  static renderAnimation(res, record) {
+    let playerPos = res.room.players.find(
+      player => player.ip == record.playerIp
+    ).pos;
+    if (playerPos == res.playerPos) return;
+    let userDOM = Game.player(playerPos);
+    if (!userDOM) return;
+    let userFace = userDOM.findByTagName("FACE")[0];
+    this.renderAbracaAnimation(
+      userFace.documentTop() + userFace.offsetHeight / 2,
+      userFace.documentLeft() + userFace.offsetWidth / 2,
+      record.cardNo
+    );
+  }
   static renderAbracaAnimation(top, left, cardNum) {
     Material.callMask();
-    console.log(top, left)
     let abracaAnimation = createElement("animation-abraca");
     abracaAnimation.className = "filter" + cardNum;
-    abracaAnimation.style.left = left + "px";
-    abracaAnimation.style.top = top + "px";
+    abracaAnimation.style.left = left - 120 + "px";
+    abracaAnimation.style.top = top - 120 + "px";
     abracaAnimation.innerHTML = "<abraca-1></abraca-1><abraca-2></abraca-2>";
 
     let animationEnd = () => {
@@ -281,5 +224,14 @@ class Render {
     };
     abracaAnimation.addEventListener("animationend", animationEnd);
     document.body.append(abracaAnimation);
+  }
+
+  static renderUsedCardStatic(res) {
+    if (res.room.usedCards != Game.room.usedCards) {
+      getElementById("used-cards-static").innerHTML = Format.activitiesCard(
+        res.room.usedCards
+      );
+      Game.room.usedCards = res.room.usedCards;
+    }
   }
 }

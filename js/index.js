@@ -39,6 +39,9 @@ class GetStart {
   }
   static reconnectRoom() {
   }
+  static setRoomId(id) {
+    document.getElementById("joining-room-id").value = id;
+  }
   static randomName() {
     let name =
       adjList[Math.floor(Math.random() * adjList.length)] +

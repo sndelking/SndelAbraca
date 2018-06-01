@@ -41,7 +41,7 @@ class Game {
     let initData = res => {
       document.getElementById("room-id").innerHTML = `房间号 ${res.room.id}`;
       Render.renderSelf(res);
-      Render.renderSeats(res);
+      Render.initSeats(res);
       this.render(res);
     };
     this.refresh(initData);
@@ -125,9 +125,10 @@ class Game {
     this.hideCommandList();
     let res = await $post("/execute-card", { cardNum });
     if (res.status == 0) {
+      let selfFace = getElementById("self").findByTagName("FACE")[0]
       Render.renderAbracaAnimation(
-        getElementById("self").offsetTop + getElementById("self").offsetHeight / 2,
-        getElementById("self").offsetWidth / 2,
+        selfFace.offsetTop + selfFace.offsetHeight / 2,
+        selfFace.offsetLeft + selfFace.offsetHeight / 2,
         cardNum
       );
       if (cardNum == 4) this.render(res);

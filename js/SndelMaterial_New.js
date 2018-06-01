@@ -319,12 +319,19 @@ class Material {
           tabsPanels.forEach((panel, idx) => {
             panel.removeAttribute("style");
           });
-
+          TOUCH_STATES_Y = null;
           TOUCH_STATES_X = null;
         };
+        let TOUCH_STATES_Y = null;
         let handlePanelsTouchMove = e => {
-          tabsPanelsCollection.setAttribute("gesture", "");
           let deltaX = TOUCH_STATES_X - e.touches[0].screenX;
+          if (
+            TOUCH_STATES_Y &&
+            Math.abs(e.touches[0].screenY - TOUCH_STATES_Y) > deltaX
+          )
+            return (TOUCH_STATES_Y = e.touches[0].screenY);
+          TOUCH_STATES_Y = e.touches[0].screenY;
+          tabsPanelsCollection.setAttribute("gesture", "");
           let activeIdx = tabs.findIndex(tab => tab.className == "active");
           if (Math.sign(deltaX) > 0 && activeIdx == tabsPanels.length - 1)
             return;
@@ -496,4 +503,16 @@ HTMLElement.prototype.findByTagName = function(tag) {
   return this.childrenArray()
     .filter(child => child.tagName == tag.toUpperCase())
     .concat(...this.childrenArray().map(child => child.findByTagName(tag)));
+};
+HTMLElement.prototype.documentTop = function() {
+  let offsetTop = ele => {
+    return ele.offsetTop + (ele.offsetParent ? offsetTop(ele.offsetParent) : 0);
+  };
+  return offsetTop(this)
+};
+HTMLElement.prototype.documentLeft = function() {
+  let offsetLeft= ele => {
+    return ele.offsetLeft + (ele.offsetParent ? offsetLeft(ele.offsetParent) : 0);
+  }
+  return offsetLeft(this);
 };

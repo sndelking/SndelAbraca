@@ -3,6 +3,7 @@ card-collection {
   box-sizing: border-box;
   flex: 1 1 480px;
   max-width: 480px;
+  width: 100%
 }
 layout card-collection {
   margin: 4px 4px;
