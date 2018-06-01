@@ -19,6 +19,11 @@ class Render {
   }
   static renderSeats(res) {
     // if(res.room.status == 0)
+    ///
+    ///
+    ///
+    ////
+    ///
   }
   static renderRoom(res) {
     this.renderRecords(res);
